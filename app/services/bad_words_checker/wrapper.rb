@@ -24,8 +24,9 @@ module BadWordsChecker
       bad_word_matches = []
       bad_word_rows.each do |row|
         matches = /([^\(]+) \(([^\)]+)\)/.match(row)
-        puts matches
-        text.gsub! /([^\s]*)#{matches[1]}([^\s]*)/, '\1' + matches[1] + ' (' + matches[2] + ')' + '\2' if matches
+        if matches
+          text.gsub! /([^\s]*?)#{matches[1]}(\p{L}*?)[^\p{L}]/, '\1' + matches[1] + '\2' + ' (' + matches[2] + ') '
+        end
       end
 
       text
