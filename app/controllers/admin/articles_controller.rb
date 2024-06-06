@@ -12,9 +12,9 @@ module Admin
 
     def create
       puts params
-      check = BadWordsChecker::Wrapper.new(
+      check = BadWordsChecker::Wrapper.call(
         api: BadWordsChecker::Api.new(input_text: params[:data])
-      ).check
+      )
       @data = check[:marked_text]
       @bad_words_list = check[:bad_words_list]
       render :new

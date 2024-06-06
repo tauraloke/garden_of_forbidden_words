@@ -1,20 +1,23 @@
 module BadWordsChecker
-  class Wrapper
-    def initialize(params)
-      @api ||= params[:api]
+  class Wrapper < ApplicationService
+    def initialize(api)
+      @api ||= api
       raise "Empty api object" if @api.nil?
     end
 
-    def check
-      @api.request
+    def call
+      @api.call
+      check
+    end
 
+    private
+
+    def check
       {
         bad_words_list: @api.response.split("\n"),
         marked_text: parse(@api.input_text, @api.response)
       }
     end
-
-    private
 
     def parse(text, list)
       bad_word_rows = list.split("\n")

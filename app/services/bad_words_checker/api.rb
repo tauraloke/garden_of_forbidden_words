@@ -1,5 +1,5 @@
 module BadWordsChecker
-  class Api
+  class Api < ApplicationService
     BAD_WORDS_AND_REACTS = {
       "картошк" => "ФУ, ГАДОСТЬ",
       "морков" => "ТОЖЕ ГАДОСТЬ",
@@ -9,10 +9,16 @@ module BadWordsChecker
     attr :response
     attr :status
 
-    def initialize(params)
-      @input_text = params[:input_text] || ""
+    def initialize(input_text:)
+      @input_text = input_text || ""
       @status = :new
     end
+
+    def call
+      request
+    end
+
+    private
 
     def request
       answer = []
