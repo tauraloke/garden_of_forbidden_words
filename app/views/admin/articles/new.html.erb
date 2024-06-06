@@ -1,5 +1,13 @@
 <h3>Create a new article</h3>
 <%= form_for(:article, :url => {:action => 'create'}) do |f| %>
+  <% if @bad_words_list %>
+    <div>Найдены вхождения:
+    <ol> 
+    <% @bad_words_list.each do |row| %>
+      <li><%= row %></li>  
+    <% end %>
+    </ol>
+  <% end %>
   <textarea name="data" rows="15"><%= @data %></textarea><br />
   <%= f.submit "Submit" %>
 <% end %>
