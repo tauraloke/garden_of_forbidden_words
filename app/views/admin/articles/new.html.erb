@@ -1,0 +1,5 @@
+<h3>Create a new article</h3>
+<%= form_for(:article, :url => {:action => 'create'}) do |f| %>
+  <textarea name="data" rows="15"><%= @data %></textarea><br />
+  <%= f.submit "Submit" %>
+<% end %>
