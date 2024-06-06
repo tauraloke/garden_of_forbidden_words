@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Тестовое задание.
 
-Things you may want to cover:
+Проект докеризирован.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Возможные улучшения:
+- Вырезать ненужный блок с postgres, доставшийся от шаблона.
+- Использовать i18n для строк в шаблонах.
+- Добавить автотесты для контроллера и сервисов.
